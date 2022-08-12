@@ -1,18 +1,21 @@
 <?php //Hi, this is the Fizzbuzz challenge
 
-function FizzBuzz (int $number)
+function FooBarFizz (int $number)
 {
     if ($number % 15 == 0) :
-        echo 'FizzBuzz';
+        echo 'FooBar';
     else :
+	if ($number % 7 == 0) {
+		echo 'Fizz ';
         if ($number % 5 == 0) {
-            echo 'Buzz';
+            echo 'Bar ';
         } else {
             if ($number % 3 == 0) {
-                echo 'Fizz';
+                echo 'Foo ';
             } else {
                 echo $number;
             }
         }
+	}
     endif;
 };
