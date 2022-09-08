@@ -1,0 +1,251 @@
+body {
+    margin: 0 !important;
+    overflow: hidden;
+}
+
+/* SKY */
+.stickmans-world {
+    background: #c2c2ff;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sun {
+  transform: scale(8) !important;
+  top: 15%;
+  left: 12%;
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(to bottom,
+        #ffc233 4px,transparent 0)
+        no-repeat 5.6px -6px/1px 6px,
+    linear-gradient(to bottom,
+        #ffc233 4px,transparent 0)
+        no-repeat 5.5px 14px/1px 6px,
+    linear-gradient(to bottom,
+        #ffc233 4px,transparent 0)
+        no-repeat -8px 5.5px/6px 1px,
+    linear-gradient(to bottom,
+        #ffc233 4px,transparent 0)
+        no-repeat 14px 5.5px/6px 1px;
+  border-radius: 100px;
+  box-shadow: inset 0 0 0 10px #ffc233;
+  border: 6px solid transparent
+}
+
+.sun::after,
+.sun::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 24px;
+  height: 1px;
+  border-right: 4px solid #ffc233;
+  border-left: 4px solid #ffc233;
+  left: -6px;
+  top: 5px;
+}
+
+.sun::before {
+  transform: rotate(-45deg)
+}
+
+.sun::after {
+  transform: rotate(45deg)
+}
+
+/* GROUND */
+.grass {
+    position: absolute;
+    top: 85%;
+    width: 100vw;
+    height: 100vh;
+    background-image: repeating-linear-gradient(-45deg, brown, brown 1px, green 1px, green 6px);
+    background-size: 4px 4px;
+}
+
+/* STICKMAN DUDE */
+.stickman-dude {
+    position: absolute;
+    top: 49%;
+    left: 18%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.stickman-dude .head {
+    width: 56px;
+    height: 60px;
+    border: solid 4px #000;
+    border-radius: 100%;
+}
+
+.stickman-dude .chest-region,
+.stickman-dude .down-region {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.stickman-dude .down-region {
+    margin-left: 3px;
+}
+
+.stickman-dude .left-arm,
+.stickman-dude .right-arm,
+.stickman-dude .body,
+.stickman-dude .left-leg,
+.stickman-dude .right-leg {
+    width: 4px;
+    height: 87px;
+    background: #000;
+}
+
+.stickman-dude .left-arm,
+.stickman-dude .right-arm,
+.stickman-dude .left-leg,
+.stickman-dude .rightt-leg  {
+    margin-left: -3.65px;
+}
+
+.stickman-dude .left-arm,
+.stickman-dude .left-leg{
+    transform: rotate(25deg);
+    transform-origin: top right;
+}
+
+.stickman-dude .right-arm,
+.stickman-dude .right-leg{
+    transform: rotate(335deg);
+    transform-origin: top left;
+}
+
+/* STICKMAN'S HOUSE */
+.house,
+.house .wall {
+    position: absolute;
+    width: 600px;
+    height: 300px;
+}
+
+.house {
+    overflow: hidden;
+    right: 7%;
+    top: 36.8%;
+    background: #fff77f;
+}
+
+.house .wall {
+    background: #0000001a;
+    left: 200px;
+}
+
+.left-roof,
+.right-roof {
+    position: absolute;
+    top: 17%;
+    width: 400px;
+    height: 150px;
+}
+
+.left-roof {
+    right: 20.5%;
+    background: #852424;
+    transform: skew(147deg, -180deg);
+    z-index: 1;
+}
+
+.right-roof {
+    position: absolute;
+    top: 17%;
+    right: 8.8%;
+    width: 445px;
+    height: 150px;
+    background: brown;
+    transform: skew(41deg, -180deg);
+    z-index: 2;
+}
+
+.roof-triangle {
+    position: absolute;
+    top: 17%;
+    right: 36.3%;
+    border-bottom: solid 150px #fff77f;
+    border-left: solid 100px transparent;
+    border-right: solid 100px transparent;
+    margin-left: 45px;
+    z-index: 2;
+}
+
+.house .window {
+    position: absolute;
+    top: 45%;
+    right: 15%;
+    width: 170px;
+    height: 80px;
+    background: hsl(206deg 52% 69%);
+    overflow: hidden;
+    border: solid 3px #3a1414;
+}
+
+.house .window .lintel {
+  background: #481919;
+  height: 100px;
+  position: relative;
+  width: 7px;
+  left: 48%;
+}
+
+.house .window .lintel:after {
+  background: #411616;
+  content: "";
+  height: 7px;
+  left: -95px;
+  position: absolute;
+  top: 38px;
+  width: 213px;
+}
+
+.house .window::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 100px;
+    top: 12%;
+    right: 0%;
+    transform: rotate(45deg);
+    border: double 3px #fff;
+}
+
+.house .door {
+    position: absolute;
+    top: 37%;
+    left: 13%;
+    width: 90px;
+    height: 201px;
+    background: #bd9538;
+    box-shadow: inset 3px 3px 0px 3px #00002038;
+}
+
+.house .door::before {
+    content: '';
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    top: 50%;
+    left: 65%;
+    background: #ebc600;
+    border-radius: 100%;
+    box-shadow: 1px 1px 0px #000;
+}
