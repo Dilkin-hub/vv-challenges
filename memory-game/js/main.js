@@ -3,7 +3,7 @@ const formButton  = document.querySelector('.send-player-btn');
 const form        = document.querySelector('#memory_game_login');
 
 const validatePlayer = ({target}) => {
-    if (target.value.length > 3) {
+    if (target.value.length >= 3) {
         formButton.removeAttribute('disabled');
         return;
     }
