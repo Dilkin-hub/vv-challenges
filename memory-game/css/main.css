@@ -27,11 +27,13 @@ span {
 }
 
 .form-wrap {
-    padding: 35px 30px;
+    padding: 15px;
     background: #e0ebfc;
     border-radius: 15px;
     box-shadow: 0px 0 15px -7px #0000004f;
 }
+
+
 
 #memory_game_login,
 .memory-game-form-header {
@@ -43,6 +45,10 @@ span {
 }
 
 #memory_game_login {
+    border: solid 4px;
+    border-color: #4671c6;
+    border-radius: 15px;
+    padding: 35px 30px;
     text-align: center;
 }
 
@@ -85,4 +91,10 @@ span {
     line-height: .9;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.send-player-btn:disabled {
+    background: #aaa;
+    color: #eee;
+    cursor: auto;
 }
