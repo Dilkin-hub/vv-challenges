@@ -1,4 +1,5 @@
 const tabletop = document.querySelector('.tabletop');
+const players  = localStorage.getItem('players');
 const deck = [
     'apple',
     'blueberry',
