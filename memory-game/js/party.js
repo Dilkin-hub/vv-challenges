@@ -1,5 +1,11 @@
-const tabletop = document.querySelector('.tabletop');
-const players  = localStorage.getItem('players');
+const tabletop    = document.querySelector('.tabletop');
+const players     = () => {
+    const playersNumber = parseInt(localStorage.getItem('players'));
+    for (let i = 0; i >= playersNumber; i++) {
+        return i;
+    }
+};
+let currentPlayer = 1;
 const deck = [
     'apple',
     'blueberry',
@@ -7,6 +13,8 @@ const deck = [
     'grape',
     'strawberry'
 ];
+
+players();
 
 const createEl = (tag, className) => {
     const element = document.createElement(tag);

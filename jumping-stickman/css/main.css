@@ -1,0 +1,205 @@
+$skip-width : 170px;
+$skip-height : 230px;
+
+body {
+  background: #093277;
+  height: $skip-height * 2;
+  position: relative;
+  margin: 0 auto;
+	max-width: 320px;
+	color: #FFF;
+	font-family: helvetica;
+  
+  h1 {
+    margin: 0 auto;
+    text-align: center;
+    animation: title 1500ms linear infinite none running;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.5), 2px 2px 0 rgba(0,0,0,.5);
+  }
+	
+	.playNow{
+		background: none;
+		border: 2px solid #fff;
+		color: #fff;
+		border-radius: 3px;
+		padding: 5px 10px;
+		font-size: 1rem;
+		cursor: pointer;
+		width: 80%;
+	}
+	.count{
+		font-size: 3rem;
+		display: inline-block;
+	  text-align: center;
+		width: 100%;
+		position: absolute;
+		top: 80px;
+	  text-shadow: 1px 1px 0 rgba(0,0,0,.5), 2px 2px 0 rgba(0,0,0,.5);
+	}
+  
+  .shadow {
+    background: rgba(0,0,0,.2);
+    content: "";
+    height: 40px;
+    border-radius: 100%;
+    bottom: -120px;
+    position: absolute;
+    left: 20px;
+    right: 0;
+    margin: 0 auto;
+    width: $skip-width;
+    animation: shadow 1500ms linear infinite none running;
+  }
+}
+
+.wrap {
+  height: $skip-height;
+  padding: 40px 0 0 0;
+  width: $skip-width; 
+  perspective: 550px;
+  position: relative;
+  margin: 0 auto;
+  animation: bounce 1500ms ease-in-out infinite none running;
+
+  .handles {  
+    .handle-left, 
+    .handle-right {
+      background: white;
+      content: "";
+      display: block;
+      height: 10px;
+      width: 45px;
+      position: absolute;
+      right: 0;
+      bottom: -5px;
+      border-radius: 2px;
+    }
+    .handle-right {
+      right: -50px;
+    }
+    .handle-left{
+      left: -50px;
+    }
+  }
+  
+  .rope {
+    border-radius: 50% 50% 0 0;
+    border: 5px white solid;
+    border-bottom: none;
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    animation: swing 1500ms infinite linear;
+    transform-origin: bottom;
+    box-sizing: border-box;
+  }
+}
+
+// Postulate: The user is facing someone rope jumping
+// The rope rotate on an X axis
+@keyframes swing {
+  0% {
+    transform: rotateX(0deg);
+		border-radius: 70% 30% 0 0;
+  }
+	12.25%{
+		border-radius: 30% 70% 0 0;
+	}
+	25%{
+		border-radius: 70% 30% 0 0;
+	}
+	37.25%{
+		border-radius: 30% 70% 0 0;
+	}
+	50%{
+		border-radius: 70% 30% 0 0;
+	}
+	67.25%{
+		border-radius: 30% 70% 0 0;
+	}
+	75%{
+		border-radius: 70% 30% 0 0;
+	}
+	87.25%{
+		border-radius: 30% 70% 0 0;
+	}
+  100% {
+    transform: rotateX(-360deg);
+		border-radius: 70% 30% 0 0;
+  }
+}
+// The user jump when the rope is close to touch his foot (40% - 60%)
+// There is a subtule up an down movement
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(15px);
+  }
+  50% {
+    transform: translateY(-80px);
+  }
+  60% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+// 1. The shadow get blurier as the rope goes highter
+// 2. The shadow get blurier and larger during the jump
+@keyframes shadow {
+  0% {
+    -webkit-filter: blur(10px);
+    transform: scale(1);
+  }
+  40% {
+    -webkit-filter: blur(3px);
+    transform: scale(1);
+  }
+  50% {
+		-webkit-filter: blur(10px);
+    transform: scale(1.2);
+  }
+  60% {
+    -webkit-filter: blur(3px);
+    transform: scale(1);
+  }
+  100% {
+    -webkit-filter: blur(10px);
+    transform: scale(1);
+  }
+}
+// The title is only visible 5% before and after the jump
+@keyframes title {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  35% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.6);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  65% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
