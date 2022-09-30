@@ -1,11 +1,10 @@
 const tabletop    = document.querySelector('.tabletop');
-const players     = () => {
-    const playersNumber = parseInt(localStorage.getItem('players'));
-    for (let i = 0; i >= playersNumber; i++) {
-        return i;
-    }
+const playersNum  = parseInt(localStorage.getItem('players'));
+let currentPlayer = null;
+const PLAYER = {
+    name: '',
+    matches: []
 };
-let currentPlayer = 1;
 const deck = [
     'apple',
     'blueberry',
@@ -14,7 +13,23 @@ const deck = [
     'strawberry'
 ];
 
-players();
+const loadPlayers = () => {
+    for (let i = 0; i < playersNum; i++) {
+        let playerIndex = i + 1;
+        PLAYER.name = 'player-' + playerIndex;
+    }
+};
+
+const loadGame = () => {
+    loadPlayers();
+    const copyCards = [...deck, ...deck];
+    const shuffled  = copyCards.sort(() => Math.random() - 0.5);
+
+    shuffled.forEach((item) => {
+        const card = createCard(item);
+        tabletop.appendChild(card);
+    })
+}
 
 const createEl = (tag, className) => {
     const element = document.createElement(tag);
@@ -94,17 +109,6 @@ const createCard = (item) => {
     card.setAttribute('data-value', item)
 
     return card;
-}
-
-const loadGame = () => {
-
-    const copyCards = [...deck, ...deck];
-    const shuffled  = copyCards.sort(() => Math.random() - 0.5);
-
-    shuffled.forEach((item) => {
-        const card = createCard(item);
-        tabletop.appendChild(card);
-    })
 }
 
 loadGame();
