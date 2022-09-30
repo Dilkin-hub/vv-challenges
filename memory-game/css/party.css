@@ -1,9 +1,30 @@
 .container {
     height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     background: #4671c6;
+}
+
+.current-player-screen {
+    display: block;
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+    background: #e0ebfc;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.current-player-screen .current-player-text {
+    font-size: 2rem;
+}
+
+.current-player-name {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #24ae5f;
 }
 
 .tabletop {

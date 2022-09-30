@@ -1,6 +1,5 @@
 const tabletop    = document.querySelector('.tabletop');
 const playersNum  = parseInt(localStorage.getItem('players'));
-let currentPlayer = null;
 const PLAYER = {
     name: '',
     matches: []
@@ -13,15 +12,33 @@ const deck = [
     'strawberry'
 ];
 
-const loadPlayers = () => {
+let firstCard  = '';
+let secondCard = '';
+let players    = [];
+let currentPlayer = players[0];
+
+// const updateTurn = () => {
+//     if (currentPlayer.name === 'Jogador 1') {
+//         currentPlayer.name 
+//     }
+// };
+
+const getPlayer = (index) => {
+    const playersList = getPlayers();
+
+    return playersList[index];
+}
+
+const getPlayers = () => {
     for (let i = 0; i < playersNum; i++) {
         let playerIndex = i + 1;
-        PLAYER.name = 'player-' + playerIndex;
+        players[i] = PLAYER.name = 'Jogador ' + playerIndex;
     }
+    return players;
 };
 
 const loadGame = () => {
-    loadPlayers();
+    console.log(getPlayers());
     const copyCards = [...deck, ...deck];
     const shuffled  = copyCards.sort(() => Math.random() - 0.5);
 
@@ -37,9 +54,6 @@ const createEl = (tag, className) => {
 
     return element;
 }
-
-let firstCard = '';
-let secondCard = '';
 
 const declareEnd = () => {
     const pairedCards = document.querySelectorAll('.paired-card');
