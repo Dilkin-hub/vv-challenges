@@ -1,10 +1,11 @@
 .container {
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     background: #4671c6;
+    padding: 30px 0;
 }
 
 .current-player-screen {
@@ -14,10 +15,12 @@
     border-radius: 10px;
     background: #e0ebfc;
     text-align: center;
-    padding: 10px 20px;
+    padding: 20px 25px;
+    margin-bottom: 15px;
 }
 
-.current-player-screen .current-player-text {
+.current-player-screen .current-player-text,
+.players-score .players-score-text {
     font-size: 2rem;
 }
 
@@ -82,4 +85,52 @@
     background-position: center center !important;
     background-repeat: no-repeat !important;
     backface-visibility: hidden;
+}
+
+.players-score {
+    width: 600px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 30px;
+    margin-top: 15px;
+    border-radius: 10px;
+    background: #e0ebfc;
+    overflow: hidden;
+}
+
+.players-score-text {
+    margin-bottom: 10px;
+}
+
+.score-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin: 10px 0;
+    position: relative;
+}
+
+.score-item:nth-child(2n+1):before {
+    content: '';
+    width: 140%;
+    height: 45px;
+    background: #00000012;
+    position: absolute;
+    left: -20%;
+    z-index: 0;
+}
+
+
+.score-item .name,.score-item .matches {
+    font-size: 1.6rem;
+    font-weight: 900;
 }

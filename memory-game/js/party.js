@@ -1,6 +1,8 @@
-const tabletop    = document.querySelector('.tabletop');
-const playersNum  = parseInt(localStorage.getItem('players'));
-const PLAYER = {
+const tabletop     = document.querySelector('.tabletop');
+const currentPlayerScreen = document.querySelector('.current-player-name');
+const playersScore = document.querySelector('.players-score');
+const playersNum   = parseInt(localStorage.getItem('players'));
+let PLAYER = {
     name: '',
     matches: []
 };
@@ -15,13 +17,10 @@ const deck = [
 let firstCard  = '';
 let secondCard = '';
 let players    = [];
-let currentPlayer = players[0];
-
-// const updateTurn = () => {
-//     if (currentPlayer.name === 'Jogador 1') {
-//         currentPlayer.name 
-//     }
-// };
+let currentPlayer = {
+    name: 'Jogador 1',
+    matches: []
+};
 
 const getPlayer = (index) => {
     const playersList = getPlayers();
@@ -32,13 +31,34 @@ const getPlayer = (index) => {
 const getPlayers = () => {
     for (let i = 0; i < playersNum; i++) {
         let playerIndex = i + 1;
-        players[i] = PLAYER.name = 'Jogador ' + playerIndex;
+        const playerName = 'Jogador ' + playerIndex;
+        PLAYER = {
+            name: playerName,
+            matches: []
+        };
+        
+        players[i] = PLAYER;
     }
+
     return players;
 };
 
+const updateScore = (player) => {
+    const scoreItem = createEl('div', 'score-item');
+    const name      = createEl('div', 'name');
+    const matches    = createEl('div', 'matches');
+
+    scoreItem.appendChild(name);
+    scoreItem.appendChild(matches);
+
+    name.textContent = player.name;
+    matches.textContent = player.matches.length;
+
+    return scoreItem;
+}
+
 const loadGame = () => {
-    console.log(getPlayers());
+    const players   = getPlayers();
     const copyCards = [...deck, ...deck];
     const shuffled  = copyCards.sort(() => Math.random() - 0.5);
 
@@ -46,6 +66,13 @@ const loadGame = () => {
         const card = createCard(item);
         tabletop.appendChild(card);
     })
+
+    players.forEach((item) => {
+        const scoreItem = updateScore(item);
+        playersScore.appendChild(scoreItem);
+    })
+
+    updateTurn();
 }
 
 const createEl = (tag, className) => {
@@ -76,6 +103,7 @@ const validateCards = () => {
         firstCard = '';
         secondCard = '';
 
+        updateCurrentPlayer();
         declareEnd();
     } else {
         setTimeout(() => {
@@ -84,8 +112,26 @@ const validateCards = () => {
 
             firstCard = '';
             secondCard = '';
+
+            // console.log(updateCurrentPlayer())
         }, 500)
     }
+}
+
+const updateCurrentPlayer = () => {
+    const players = getPlayers();
+
+    players.forEach((playerItem) => {
+        if (playerItem.name === currentPlayer.name) {
+
+            return;
+        } else {
+            currentPlayer = playerItem;
+            return;
+        }
+    })
+
+    return currentPlayer;
 }
 
 const revealCard = ({target}) => {
@@ -125,4 +171,19 @@ const createCard = (item) => {
     return card;
 }
 
+const updateTurn = () => {
+    const players = getPlayers();
+
+    players.forEach((currentPlayer) => {
+        // if (currentPlayer.name === 'Jogador 1') {
+        //     currentPlayer.name = 'Jogador 2';
+        // }
+        // console.log(currentPlayer);
+
+    });
+};
+
 loadGame();
+
+currentPlayerScreen.textContent = currentPlayer.name;
+
