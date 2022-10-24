@@ -17,10 +17,7 @@ const deck = [
 let firstCard  = '';
 let secondCard = '';
 let players    = [];
-let currentPlayer = {
-    name: 'Jogador 1',
-    matches: []
-};
+let currentPlayer = {};
 
 const getPlayer = (index) => {
     const playersList = getPlayers();
@@ -33,12 +30,15 @@ const getPlayers = () => {
         let playerIndex = i + 1;
         const playerName = 'Jogador ' + playerIndex;
         PLAYER = {
+            index: i,
             name: playerName,
             matches: []
         };
         
         players[i] = PLAYER;
     }
+
+    currentPlayer = players[0];
 
     return players;
 };
@@ -61,6 +61,8 @@ const loadGame = () => {
     const players   = getPlayers();
     const copyCards = [...deck, ...deck];
     const shuffled  = copyCards.sort(() => Math.random() - 0.5);
+    
+    currentPlayer = players[0];
 
     shuffled.forEach((item) => {
         const card = createCard(item);
@@ -72,7 +74,7 @@ const loadGame = () => {
         playersScore.appendChild(scoreItem);
     })
 
-    updateTurn();
+    currentPlayerScreen.textContent = currentPlayer.name;
 }
 
 const createEl = (tag, className) => {
@@ -83,7 +85,7 @@ const createEl = (tag, className) => {
 }
 
 const declareEnd = () => {
-    const pairedCards = document.querySelectorAll('.paired-card');
+    const pairedCards = document.querySelectorAll('.paired-card')
 
     if (pairedCards.length === 10) {
         setTimeout(() => {
@@ -103,7 +105,6 @@ const validateCards = () => {
         firstCard = '';
         secondCard = '';
 
-        updateCurrentPlayer();
         declareEnd();
     } else {
         setTimeout(() => {
@@ -113,29 +114,34 @@ const validateCards = () => {
             firstCard = '';
             secondCard = '';
 
-            // console.log(updateCurrentPlayer())
         }, 500)
     }
+
+    updateCurrentPlayer();
 }
 
 const updateCurrentPlayer = () => {
     const players = getPlayers();
 
-    players.forEach((playerItem) => {
-        if (playerItem.name === currentPlayer.name) {
+    for (var [i, player] of players.entries()) {
+        if (i == currentPlayer.index) {
+            i++;
 
-            return;
+            currentPlayer = players[i];
+            break;
         } else {
-            currentPlayer = playerItem;
-            return;
+            currentPlayer = players[0];
         }
-    })
+    } 
+
+    currentPlayerScreen.textContent = currentPlayer.name;
 
     return currentPlayer;
 }
 
 const revealCard = ({target}) => {
     const card = target.parentNode;
+
     if (card.className.includes('selected')) {
         return;
     }
@@ -171,19 +177,4 @@ const createCard = (item) => {
     return card;
 }
 
-const updateTurn = () => {
-    const players = getPlayers();
-
-    players.forEach((currentPlayer) => {
-        // if (currentPlayer.name === 'Jogador 1') {
-        //     currentPlayer.name = 'Jogador 2';
-        // }
-        // console.log(currentPlayer);
-
-    });
-};
-
 loadGame();
-
-currentPlayerScreen.textContent = currentPlayer.name;
-

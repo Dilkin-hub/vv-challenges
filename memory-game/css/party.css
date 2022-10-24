@@ -53,7 +53,8 @@
     transform-style: preserve-3d !important; 
 }
 
-.card.selected {
+.card.selected,
+.card.paired-card {
     transform: rotateY(180deg) !important;
 }
 
