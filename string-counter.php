@@ -1,12 +1,14 @@
 <?php
 
-function letterIsVowel($letter)
+$ASCII_SIZE = 256;
+
+function letterIsVowel(string $letter): bool
 {
     $letter = strtoupper($letter);
     return ($letter =='A' || $letter =='E' || $letter =='I' || $letter =='O' || $letter =='U');
 }
 
-function countVowels($string)
+function countVowels(string $string)
 {
     $count = 0;
     for ($i = 0; $i < strlen($string); $i++)
@@ -15,14 +17,16 @@ function countVowels($string)
     return $count;
 }
 
-function getFrequentCharacter($string)
+function getFrequentCharacter(string $string)
 {
     global $ASCII_SIZE;
 
-    $count = array_fill(0, $ASCII_SIZE, NULL);
+    $string = str_replace(' ', '', $string);
+    $string = preg_replace("/[^A-Za-z ]/", '', $string);
+    $count  = array_fill(0, $ASCII_SIZE, NULL);
  
-    $len = strlen($string);
-    $max = 0;
+    $len   = strlen($string);
+    $max   = 0;
  
     for ($i = 0; $i < ($len); $i++)
     {
@@ -34,19 +38,32 @@ function getFrequentCharacter($string)
         }
     }
  
-    return $result;
+    return [
+        'frequency' => $max,
+        'result'    => $result
+    ];
 }
 
-function displayStringCounter($string)
+function displayStringCounter(string $string)
 {
-    $vowelsCount = countVowels($string);
+    $string = str_replace(' ', '', $string);
+    $string = preg_replace("/[^A-Za-z ]/", '', $string);
+
+    if (!is_string($string) || is_numeric($string) || !$string) :
+        echo 'Valor inválido.';
+        return;
+    endif;
+
+    $vowelsCount   = countVowels($string);
+    $frequencyChar = getFrequentCharacter($string);
 
     if ($vowelsCount < 1) :
-        echo 'Nenhuma vogal encontrada em '. $string .'<br/>';
+        echo 'Nenhuma vogal encontrada<br/>';
     else:
         echo 'Quantidade de vogais: ' . $vowelsCount . '<br/>';
     endif;
-    echo 'Letra mais utilizada: ' . getFrequentCharacter($string) . '<br/>';
+
+    echo 'Letra mais utilizada: ' . $frequencyChar['result'] . ' ('. $frequencyChar['frequency'] .' vezes)<br/>';
 }
 
 $string = 'Cachorro';
