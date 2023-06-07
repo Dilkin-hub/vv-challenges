@@ -1,0 +1,78 @@
+/* !- DO NOT TOUCH -! */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  border: none;
+  font-family: "Verdana", "Geneva", "Tahoma", sans-serif;
+}
+
+h1,
+h2,
+p,
+a,
+button,
+span {
+  color: #272727;
+}
+
+/* !- DO NOT TOUCH -! */
+
+.guessing-bg {
+  width: 100%;
+  height: 100vh;
+  background: #bbbbbb;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.guessing-main-container {
+  display: flex;
+  max-width: 745px;
+  width: 100%;
+  background: #fff;
+  padding: 1em 1.7em;
+  border-radius: 10px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.guessing-main-container .container-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.guessing-main-container .guessing-title {
+  text-transform: uppercase;
+  font-size: 2.2em;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.guessing-main-container .guessing-description {
+  font-size: 0.8em;
+}
+
+.guessing-main-container .container-main {
+  display: flex;
+  justify-content: center;
+}
+
+.generate-number-btn {
+  display: block;
+  width: fit-content;
+  background: #65ed76;
+  padding: 10px 35px;
+  font-size: 1.4em;
+  line-height: 1;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.generate-number-btn:hover {
+  background: #5dd96c;
+}
