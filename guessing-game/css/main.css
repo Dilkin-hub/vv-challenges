@@ -31,18 +31,19 @@ span {
 
 .guessing-main-container {
   display: flex;
-  max-width: 745px;
+  max-width: 570px;
   width: 100%;
   background: #fff;
-  padding: 1em 1.7em;
+  padding: 2.2em 3em;
   border-radius: 10px;
   flex-direction: column;
   flex-wrap: nowrap;
+  box-shadow: 0 0 3px 0px #0000002e;
 }
 
 .guessing-main-container .container-header {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .guessing-main-container .guessing-title {
@@ -53,12 +54,53 @@ span {
 }
 
 .guessing-main-container .guessing-description {
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 .guessing-main-container .container-main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.select-difficulty-wrap {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  width: fit-content;
+  margin-bottom: 30px;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.select-difficulty-wrap label {
+  display: block;
+  font-size: 0.8em;
+  line-height: 1;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.select-guessing-difficulty {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  width: 185px;
+  height: 2.7em;
+  font-size: 1em;
+  padding: 5px 9px;
+  border: solid 1px;
+  border-radius: 10px;
+  border-color: #b5b5b5;
+  cursor: pointer;
+}
+
+.difficulty-info-text {
+  display: block;
+  font-size: 0.7em;
+  line-height: 1;
+  text-align: right;
+  margin-top: 3px;
 }
 
 .generate-number-btn {
@@ -75,4 +117,58 @@ span {
 
 .generate-number-btn:hover {
   background: #5dd96c;
+}
+
+.hidden {
+  display: none !important;
+  user-select: none !important;
+  pointer-events: none !important;
+}
+
+.guessing-area-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: stretch;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 100%;
+}
+
+.guess-number-input,
+.guess-number-btn {
+  display: block;
+  width: fit-content;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+.guess-number-input {
+  background: #eee;
+  padding: 5px 10px;
+  border: solid 1px;
+  border-color: #a39b9b;
+  height: 3.5em;
+  width: 35%;
+}
+
+.guess-number-btn {
+  height: 3.5em;
+  line-height: 3;
+  padding: 5px 25px;
+  background: #e39069;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.guess-number-btn:hover {
+  background: #c57a57;
+}
+
+.attempts-view-panel {
+  display: block;
+  margin-top: 55px;
+  font-size: 0.8em;
+  line-height: 1;
 }
