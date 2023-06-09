@@ -1,6 +1,9 @@
 <?php
-$students = ['Aluno 1', 'Aluno 2', 'Aluno 3'];
-$classes  = ['Geografia', 'História', 'Línguas'];
+// TODO
+// Implementar o form
+// Melhorar o throw de erros (ver como fazer com php)
+// Absorver os eventos do form para js
+// Transformar os alunos em repetidores (?)
 ?>
 <!DOCTYPE html>
 <html lang="en">
