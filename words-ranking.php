@@ -5,8 +5,7 @@ function rankWordsScore($word)
 
   $alphabet   = 'abcdefghijklmnopqrstuvwxyz';
 
-  $word = strtr($word, 'áàãâéèêíïóôõöúüç', 'aaaaeeiiiooouuc');
-  $word = preg_replace('/[^a-z]/', '', $word);
+  $word = iconv('UTF-8', 'ASCII//TRANSLIT', $word);
 
   $pieces = str_split(mb_strtolower($word, 'UTF-8'));
 
