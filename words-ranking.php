@@ -1,29 +1,30 @@
 <?php
 function rankWordsScore($word)
 {
-  $score  = 0;
-
-  $alphabet   = 'abcdefghijklmnopqrstuvwxyz';
-
-  $word = iconv('UTF-8', 'ASCII//TRANSLIT', $word);
-
-  $pieces = str_split(mb_strtolower($word, 'UTF-8'));
+  $score     = 0;
+  $alphabet  = 'abcdefghijklmnopqrstuvwxyz';
+  
+  $word      = iconv('UTF-8', 'ASCII//TRANSLIT', $word);
+  $pieces    = preg_split('//u', $word, -1, PREG_SPLIT_NO_EMPTY);
 
   foreach ($pieces as $piece) :
-    $isUpper = ctype_upper($piece);
-    $piece = mb_strtolower($piece, 'UTF-8');
+    $isUpper  = ctype_upper($piece);
+    $piece    = mb_strtolower($piece, 'UTF-8');
 
     if (mb_strpos($alphabet, $piece, 0, 'UTF-8') !== false) :
-      $score += mb_strpos($alphabet, $piece, 0, 'UTF-8') + 1;
+      $pieceValue = mb_strpos($alphabet, $piece, 0, 'UTF-8') + 1;
 
       if ($isUpper) :
-        $score *= 2;
+        $pieceValue *= 2;
       endif;
+
+      $score += $pieceValue;
     endif;
   endforeach;
 
   return $score;
 }
+
 function orderWordsByScore($wordsList)
 {
   usort($wordsList, function ($a, $b) {
