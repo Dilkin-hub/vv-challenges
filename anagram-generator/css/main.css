@@ -1,1 +1,127 @@
+/* !- DO NOT TOUCH -! */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  border: none;
+  font-family: "Verdana", "Geneva", "Tahoma", sans-serif;
+}
 
+h1,
+h2,
+p,
+a,
+button,
+span {
+  color: #272727;
+}
+
+/* !- DO NOT TOUCH -! */
+
+.main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #414141;
+}
+
+.form-container {
+  display: block;
+  width: 620px;
+  padding: 15px;
+  background: #ececec;
+  border-radius: 5px;
+  box-shadow: 0px 0 15px -7px #0000004f;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 0.9rem;
+  margin-bottom: 3rem;
+}
+
+input {
+  width: calc(100% - 140px);
+  height: 2.7rem;
+  padding: 0 0.5rem;
+  border: solid 2px;
+  border-radius: 5px;
+  border-color: #414141;
+}
+
+.generate-anagrams-btn {
+  display: inline-block;
+  width: 130px;
+  height: 2.7rem;
+  background: #9b55bd;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.generate-anagrams-btn:disabled {
+  background: #969696;
+}
+
+.results {
+  display: block;
+  width: 620px;
+  min-height: fit-content;
+  max-height: 370px;
+  padding: 15px;
+  background: #ececec;
+  border-radius: 5px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.results::-webkit-scrollbar {
+  display: none;
+}
+
+.results .results-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.results-panel .anagram-item {
+  display: block;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.2rem 0;
+  text-align: center;
+}
+
+.results-panel .anagram-item:nth-child(odd) {
+  background: #e8e8e8;
+}
+
+.results .results-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1.5rem;
+}
+
+.anagram-unique-text,
+.anagram-duplicates-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.anagram-unique-text {
+  color: #5b5d63;
+}
+
+.anagram-duplicates-text {
+  color: #d54e4e;
+}
