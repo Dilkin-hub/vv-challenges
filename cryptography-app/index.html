@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Head section -->
+    <meta charset="utf-8" />
+    <title>Cifra de espiões</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="./css/main.css" />
+    <script defer src="./js/main.js"></script>
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="form-container">
+        <h1 class="title">Cifra de espiões</h1>
+        <p class="description">
+          Coloque abaixo os termos que você deseja criptografar ou
+          descriptografar.
+        </p>
+
+        <input
+          type="text"
+          class="cryptography-text-field"
+          id="cryptographyValue"
+        />
+        <button class="cryptography-btn" data-action="encrypth" disabled>
+          Criptografar
+        </button>
+        <button class="cryptography-btn" data-action="decrypth" disabled>
+          Descriptografar
+        </button>
+      </div>
+      <div class="result-panel"></div>
+    </div>
+  </body>
+</html>
